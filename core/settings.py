@@ -24,7 +24,7 @@ SECRET_KEY = "django-insecure-^%ot)gw@!#@r!qd-6c1-4uk1(ivud9z#yr@6vu6#q%8ky53ju5
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 # Application definition
 
@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "rest_framework",
     "djoser",
     'drf_yasg',
+    "corsheaders",
     'accounts',
     'shop',
     'orders',
@@ -49,6 +50,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
+    "corsheaders.middleware.CorsMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
     "django.contrib.auth.middleware.AuthenticationMiddleware",
@@ -89,7 +91,7 @@ DATABASES = {
 # DATABASES = {
 #     "default": {
 #         "ENGINE": "django.db.backends.postgresql_psycopg2",
-#         "NAME": "priceoye_db",
+#         "NAME": "db",
 #         "USER": "postgres",
 #         "PASSWORD": "postgres",
 #         "PORT": "5432",
@@ -205,3 +207,27 @@ SWAGGER_SETTINGS = {
 }
 
 AUTH_USER_MODEL = 'accounts.CustomUser'
+
+
+
+# CORS_ALLOWED_ORIGINS = [
+#     # "https://example.com",
+#     # "https://sub.example.com",
+#     "http://localhost:8000",
+#     "http://127.0.0.1:8000",
+# ]
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'live.smtp.mailtrap.io'
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'api'
+EMAIL_HOST_PASSWORD = 'aedd1b28f67ed20191ffdebb8d3fef92'
+EMAIL_PORT = '2525'
+EMAIL_USE_TLS = True
+EMAIL_USE_SSL = False
+
+
+# EMAIL_HOST = 'sandbox.smtp.mailtrap.io'
+# EMAIL_HOST_USER = 'api'
+# EMAIL_HOST_PASSWORD = 'aedd1b28f67ed20191ffdebb8d3fef92'
+# EMAIL_PORT = '2525'
